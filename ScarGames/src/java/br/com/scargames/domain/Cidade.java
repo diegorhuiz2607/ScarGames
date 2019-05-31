@@ -23,15 +23,14 @@ public class Cidade implements Serializable{
     
     @NotNull
     @Column(name="nome")
-    @Size(min=1,max=100)
     private String nome;
     
     @NotNull
     @Column(name="estado")
-    @Size(min=2,max=2)
+    @Size(min=2, max=2)
     private String estado;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy ="id")
     private List<Endereco> enderecos;
 
     public Cidade() {
@@ -74,11 +73,13 @@ public class Cidade implements Serializable{
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
     }
-
+    
+    
+    
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -99,4 +100,7 @@ public class Cidade implements Serializable{
         }
         return true;
     }
+    
+    
+    
 }

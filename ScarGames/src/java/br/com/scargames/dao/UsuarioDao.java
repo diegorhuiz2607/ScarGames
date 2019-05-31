@@ -2,6 +2,7 @@ package br.com.scargames.dao;
 
 import br.com.scargames.domain.Usuario;
 import br.com.scargames.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -12,7 +13,7 @@ public class UsuarioDao {
         session.beginTransaction();
         session.getTransaction().commit();
     }
-
+    
     public List<Usuario> listar(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -23,8 +24,8 @@ public class UsuarioDao {
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-            return null;
-        }
+        }   
+        return new ArrayList();
     }
     
     public Usuario consultar(Integer id){
@@ -38,25 +39,27 @@ public class UsuarioDao {
             session.getTransaction().rollback();
             e.printStackTrace();
             return null;
-        }
+        }   
     }
     
     public Usuario consultarPorEmail(String email){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         try{
             Usuario usuario = (Usuario)session.createQuery("from Usuario where email = '" + email + "'").uniqueResult();
+            System.out.println(usuario.getNome());
             session.getTransaction().commit();
             return usuario;
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
             return null;
-        }
+        }   
     }
     
-    public Boolean inserir(Usuario usuario){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    
+    public Boolean inserir (Usuario usuario){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.save(usuario);
@@ -64,13 +67,14 @@ public class UsuarioDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }       
     }
     
-    public Boolean alterar(Usuario usuario){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    
+    public Boolean alterar (Usuario usuario){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.update(usuario);
@@ -78,13 +82,13 @@ public class UsuarioDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
     
-    public Boolean excluir(Usuario usuario){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean excluir (Usuario usuario){
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.delete(usuario);
@@ -92,8 +96,10 @@ public class UsuarioDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
+    
+   
 }

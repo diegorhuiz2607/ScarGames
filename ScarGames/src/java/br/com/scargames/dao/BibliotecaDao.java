@@ -1,13 +1,14 @@
 package br.com.scargames.dao;
 
+import br.com.scargames.domain.Bandeira;
 import br.com.scargames.domain.Biblioteca;
 import br.com.scargames.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class BibliotecaDao {
-
-    public List<Biblioteca> listar(){
+     public List<Biblioteca> listar(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
@@ -17,8 +18,8 @@ public class BibliotecaDao {
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-            return null;
-        }
+        }   
+        return new ArrayList();
     }
     
     public Biblioteca consultar(Integer id){
@@ -32,11 +33,11 @@ public class BibliotecaDao {
             session.getTransaction().rollback();
             e.printStackTrace();
             return null;
-        }
+        }   
     }
     
-    public Boolean inserir(Biblioteca biblioteca){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean inserir (Biblioteca biblioteca){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.save(biblioteca);
@@ -44,13 +45,14 @@ public class BibliotecaDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }       
     }
     
-    public Boolean alterar(Biblioteca biblioteca){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    
+    public Boolean alterar (Biblioteca biblioteca){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.update(biblioteca);
@@ -58,13 +60,13 @@ public class BibliotecaDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
     
-    public Boolean excluir(Biblioteca biblioteca){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean excluir (Biblioteca biblioteca){
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.delete(biblioteca);
@@ -72,8 +74,10 @@ public class BibliotecaDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
+    
+    
 }

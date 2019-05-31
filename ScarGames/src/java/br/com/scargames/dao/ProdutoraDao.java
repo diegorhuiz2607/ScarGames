@@ -1,12 +1,13 @@
 package br.com.scargames.dao;
 
+import br.com.scargames.domain.Jogo;
 import br.com.scargames.domain.Produtora;
 import br.com.scargames.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class ProdutoraDao {
-
     public List<Produtora> listar(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -17,8 +18,8 @@ public class ProdutoraDao {
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-            return null;
-        }
+        }   
+        return new ArrayList();
     }
     
     public Produtora consultar(Integer id){
@@ -32,11 +33,11 @@ public class ProdutoraDao {
             session.getTransaction().rollback();
             e.printStackTrace();
             return null;
-        }
+        }   
     }
     
-    public Boolean inserir(Produtora produtora){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean inserir (Produtora produtora){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.save(produtora);
@@ -44,13 +45,14 @@ public class ProdutoraDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }       
     }
     
-    public Boolean alterar(Produtora produtora){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    
+    public Boolean alterar (Produtora produtora){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.update(produtora);
@@ -58,13 +60,13 @@ public class ProdutoraDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
     
-    public Boolean excluir(Produtora produtora){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean excluir (Produtora produtora){
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.delete(produtora);
@@ -72,8 +74,10 @@ public class ProdutoraDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
+    
+   
 }

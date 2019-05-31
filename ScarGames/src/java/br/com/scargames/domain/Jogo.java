@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="jogo")
-public class Jogo implements Serializable {
+public class Jogo implements Serializable{
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,38 +24,42 @@ public class Jogo implements Serializable {
     
     @NotNull
     @Column(name="titulo")
-    @Size(min=1,max=100)
+    @Size(min=1, max=100)
     private String titulo;
     
     @NotNull
-    @Column(name="classificacao")
+    @Column(name="classificacao")//oneMenu
     private Integer classificacao;
     
     @NotNull
-    @Column(name="sinopse")
-    @Size(min=1,max=1000)
+    @Column(name="sinopse")//text area
+    @Size(min=1, max=1000)
     private String sinopse;
     
     @NotNull
-    @Column(name="requisitos")
-    @Size(min=1,max=200)
+    @Column(name="preco")
+    private Double preco;
+    
+    @NotNull
+    @Column(name="requisitos")//input
+    @Size(min=1, max=200)
     private String requisitos;
     
     @NotNull
-    @Column(name="nota")
+    @Column(name="nota")//input
     private Double nota;
     
-    @JoinColumn(name="genero",referencedColumnName="id")
+    @JoinColumn(name="genero", referencedColumnName ="id")
     @ManyToOne(optional=false)
     private Genero genero;
     
-    @JoinColumn(name="produtora",referencedColumnName="id")
+    @JoinColumn(name="produtora", referencedColumnName ="id")
     @ManyToOne(optional=false)
     private Produtora produtora;
     
-    @OneToOne(mappedBy="jogo")
+    @OneToOne(mappedBy = "jogo")
     private Biblioteca biblioteca;
-
+    
     public Jogo() {
     }
 
@@ -69,6 +73,16 @@ public class Jogo implements Serializable {
         this.genero = genero;
         this.produtora = produtora;
     }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+    
+    
 
     public Integer getId() {
         return id;
@@ -141,11 +155,13 @@ public class Jogo implements Serializable {
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -166,4 +182,7 @@ public class Jogo implements Serializable {
         }
         return true;
     }
+    
+    
+            
 }

@@ -1,12 +1,14 @@
 package br.com.scargames.dao;
 
+import br.com.scargames.domain.Cidade;
 import br.com.scargames.domain.Endereco;
 import br.com.scargames.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class EnderecoDao {
-
+    
     public List<Endereco> listar(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -17,8 +19,8 @@ public class EnderecoDao {
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-            return null;
-        }
+        }   
+        return new ArrayList();
     }
     
     public Endereco consultar(Integer id){
@@ -32,11 +34,11 @@ public class EnderecoDao {
             session.getTransaction().rollback();
             e.printStackTrace();
             return null;
-        }
+        }   
     }
     
-    public Boolean inserir(Endereco endereco){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean inserir (Endereco endereco){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.save(endereco);
@@ -44,13 +46,14 @@ public class EnderecoDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }       
     }
     
-    public Boolean alterar(Endereco endereco){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    
+    public Boolean alterar (Endereco endereco){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.update(endereco);
@@ -58,13 +61,13 @@ public class EnderecoDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
     
-    public Boolean excluir(Endereco endereco){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public Boolean excluir (Endereco endereco){
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();  
         session.beginTransaction();
         try{
             session.delete(endereco);
@@ -72,8 +75,11 @@ public class EnderecoDao {
             return true;
         }catch(Exception e){
             session.getTransaction().rollback();
-            e.printStackTrace();
+                e.printStackTrace();
             return false;
-        }
+        }      
     }
+    
+    
+    
 }

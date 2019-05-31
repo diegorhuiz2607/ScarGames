@@ -1,6 +1,8 @@
+
 package br.com.scargames.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -11,33 +13,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="cartao")
 public class Cartao implements Serializable{
     
-    @Id
+     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
     @NotNull
     @Column(name="numero")
-    @Size(min=16,max=16)
+    @Size(min=16, max=16)
     private String numero;
     
     @NotNull
     @Column(name="vencimento")
+     @Size(min=1, max=20)
     private Date vencimento;
     
-    @JoinColumn(name="bandeira", referencedColumnName="id")
+    @JoinColumn(name="bandeira", referencedColumnName ="id")
     @ManyToOne(optional=false)
     private Bandeira bandeira;
     
-    @JoinColumn(name="usuario",referencedColumnName="id")
+    @JoinColumn(name="usuario", referencedColumnName ="id")
     @ManyToOne(optional=false)
-    private Usuario usuario;
+    private Usuario usuario; 
 
     public Cartao() {
     }
@@ -89,11 +95,13 @@ public class Cartao implements Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -114,4 +122,6 @@ public class Cartao implements Serializable{
         }
         return true;
     }
+    
+    
 }

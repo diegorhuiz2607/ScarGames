@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.scargames.domain;
 
 import java.io.Serializable;
@@ -14,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="produtora")    
+@Table(name="produtora")  
 public class Produtora implements Serializable{
     
     @Id
@@ -23,10 +28,10 @@ public class Produtora implements Serializable{
     
     @NotNull
     @Column(name="nome")
-    @Size(min=1,max=100)
+    @Size(min=1, max=100)
     private String nome;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy ="id")
     private List<Jogo> jogos;
 
     public Produtora() {
@@ -60,11 +65,13 @@ public class Produtora implements Serializable{
     public void setJogos(List<Jogo> jogos) {
         this.jogos = jogos;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -85,4 +92,6 @@ public class Produtora implements Serializable{
         }
         return true;
     }
+    
+    
 }

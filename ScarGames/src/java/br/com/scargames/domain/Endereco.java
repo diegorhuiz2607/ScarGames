@@ -23,35 +23,36 @@ public class Endereco implements Serializable{
     
     @NotNull
     @Column(name="logradouro")
-    @Size(min=1,max=100)
+    @Size(min=1, max=100)
     private String logradouro;
     
     @NotNull
     @Column(name="numero")
-    @Size(min=1,max=20)
+    @Size(min=1, max=20)
     private String numero;
-
+    
+    @NotNull
     @Column(name="complemento")
-    @Size(min=1,max=30)
+    @Size(min=1, max=30)
     private String complemento;
     
     @NotNull
     @Column(name="bairro")
-    @Size(min=1,max=100)
+    @Size(min=1, max=100)
     private String bairro;
     
     @NotNull
     @Column(name="cep")
-    @Size(min=1,max=10)
+    @Size(min=1, max=10)
     private String cep;
     
-    @JoinColumn(name="cidade",referencedColumnName="id")
+    @JoinColumn(name="cidade", referencedColumnName ="id")
     @ManyToOne(optional=false)
     private Cidade cidade;
     
-    @JoinColumn(name="usuario",referencedColumnName="id")
+    @JoinColumn(name="usuario", referencedColumnName ="id")
     @ManyToOne(optional=false)
-    private Usuario usuario;
+    private Usuario usuario; 
 
     public Endereco() {
     }
@@ -130,11 +131,13 @@ public class Endereco implements Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -155,4 +158,7 @@ public class Endereco implements Serializable{
         }
         return true;
     }
+    
+    
+    
 }

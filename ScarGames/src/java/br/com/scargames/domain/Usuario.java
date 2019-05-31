@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
@@ -25,14 +27,15 @@ public class Usuario implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
+    
     @NotNull
     @Column(name="nome")
-    @Size(min=1,max=100)
+    @Size(min=1, max=100)
     private String nome;
     
     @NotNull
     @Column(name="cpf")
-    @Size(min=11,max=11)
+    @Size(min=11, max=11)
     private String cpf;
     
     @NotNull
@@ -41,37 +44,37 @@ public class Usuario implements Serializable{
     
     @NotNull
     @Column(name="sexo")
-    @Size(min=1,max=1)
+    @Size(min=1, max=1)
     private String sexo;
     
     @NotNull
     @Column(name="telefone")
-    @Size(min=1,max=45)
+    @Size(min=1, max=45)
     private String telefone;
     
     @NotNull
-    @Column(name="email",unique=true)
-    @Size(min=1,max=50)
+    @Column(name="email", unique=true)
+    @Size(min=1, max=50)
     @Email
     private String email;
     
     @NotNull
     @Column(name="senha")
-    @Size(min=6,max=100)
+    @Size(min=6, max=100)
     private String senha;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy ="id")
     private List<Endereco> enderecos;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy ="id")
     private List<Cartao> cartoes;
     
-    @OneToOne(mappedBy="usuario")
+    @OneToOne(mappedBy = "usuario")
     private Biblioteca biblioteca;
     
-    public Usuario() {
+
+    public Usuario(){
     }
-    
     public Usuario(String email, String senha){
         this.email = email;
         this.senha = senha;
@@ -175,11 +178,13 @@ public class Usuario implements Serializable{
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
+    
+    
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -200,4 +205,7 @@ public class Usuario implements Serializable{
         }
         return true;
     }
+    
+    
+    
 }

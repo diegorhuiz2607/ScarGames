@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="biblioteca")
 public class Biblioteca implements Serializable{
@@ -18,16 +19,15 @@ public class Biblioteca implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
-    @JoinColumn(name="usuario",referencedColumnName="id")
-    @OneToOne(optional=false)
+    @JoinColumn(name="usuario", referencedColumnName = "id")
+    @OneToOne(optional = false)
     private Usuario usuario;
     
-    @JoinColumn(name="jogo",referencedColumnName="id")
-    @OneToOne(optional=false)
+    @JoinColumn(name="jogo", referencedColumnName = "id")
+    @OneToOne(optional = false)
     private Jogo jogo;
-    
-    public Biblioteca(){
-        
+
+    public Biblioteca() {
     }
 
     public Biblioteca(Integer id, Usuario usuario, Jogo jogo) {
@@ -36,6 +36,7 @@ public class Biblioteca implements Serializable{
         this.jogo = jogo;
     }
 
+    
     public Integer getId() {
         return id;
     }
@@ -62,7 +63,7 @@ public class Biblioteca implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
@@ -84,4 +85,8 @@ public class Biblioteca implements Serializable{
         }
         return true;
     }
+    
+    
+    
+    
 }

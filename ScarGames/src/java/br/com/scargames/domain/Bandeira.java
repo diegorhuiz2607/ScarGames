@@ -21,13 +21,13 @@ public class Bandeira implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
+    @OneToMany(mappedBy ="id")
+    private List<Cartao> cartoes;
+    
     @NotNull
     @Column(name="descricao")
-    @Size(min=1,max=45)
+    @Size(min=1, max=45)
     private String descricao;
-    
-    @OneToMany(mappedBy="id")
-    private List<Cartao> cartoes;
 
     public Bandeira() {
     }
@@ -61,10 +61,11 @@ public class Bandeira implements Serializable{
         this.cartoes = cartoes;
     }
     
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -85,7 +86,6 @@ public class Bandeira implements Serializable{
         }
         return true;
     }
-    
     
     
 }

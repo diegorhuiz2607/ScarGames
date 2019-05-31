@@ -8,7 +8,7 @@ public class HibernateUtil {
     private static final SessionFactory sessionFactory;
     
     static {
-        try {
+        try {           
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
