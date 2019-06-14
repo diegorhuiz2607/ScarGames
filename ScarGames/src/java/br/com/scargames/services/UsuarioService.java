@@ -3,9 +3,8 @@ package br.com.scargames.services;
 import br.com.scargames.dao.UsuarioDao;
 import br.com.scargames.domain.Usuario;
 import br.com.scargames.util.HashMaker;
-import br.com.scargames.util.HibernateUtil;
 import java.util.List;
-import org.hibernate.Session;
+
 
 public class UsuarioService {
     

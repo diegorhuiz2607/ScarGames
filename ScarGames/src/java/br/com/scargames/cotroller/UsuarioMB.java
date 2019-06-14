@@ -1,13 +1,10 @@
 package br.com.scargames.cotroller;
 
-import br.com.scargames.domain.Produtora;
 import br.com.scargames.domain.Usuario;
-import br.com.scargames.services.JogoService;
 import br.com.scargames.services.UsuarioService;
 import br.com.scargames.util.UtilMessages;
 import java.io.Serializable;
 import java.util.List;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -16,6 +13,9 @@ import javax.faces.bean.SessionScoped;
 public class UsuarioMB implements Serializable{
     
     private Usuario usuario;
+    private String nome;
+    private String cpf;
+    private String telefone;
     private String email;
     private String senha;
     private List<Usuario> usuarios;
@@ -28,6 +28,10 @@ public class UsuarioMB implements Serializable{
         UsuarioService service = new UsuarioService();
         usuarios = service.listar();
     } 
+    public String novo(){
+        usuario = new Usuario();
+        return "new.xhtml?faces-redirect=true";
+    }
     
     public void inicializarHibernate(){
         UsuarioService service = new UsuarioService();
@@ -75,6 +79,30 @@ public class UsuarioMB implements Serializable{
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
       
     

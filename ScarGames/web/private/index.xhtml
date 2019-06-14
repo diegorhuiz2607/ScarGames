@@ -8,7 +8,9 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="titleWindow">ScarGames</ui:define>
         <ui:define name="content">
-            
+            <p:galleria value="#{imagesView.images}" var="images" panelWidth="1350" panelHeight="313" showCaption="true">
+                <p:graphicImage url="/resources/imagens/#{images}" alt="Image Description for #{image}" title="#{image}"/>
+            </p:galleria> 
         </ui:define>
     </ui:composition>                   
                     
