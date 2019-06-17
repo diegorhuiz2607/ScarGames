@@ -1,8 +1,6 @@
 package br.com.scargames.services;
-
 import br.com.scargames.dao.EnderecoDao;
 import br.com.scargames.domain.Endereco;
-import br.com.scargames.util.HashMaker;
 import java.util.List;
 
 public class EnderecoService {

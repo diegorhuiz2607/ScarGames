@@ -74,28 +74,25 @@
         
         <div class="ui-g-1"></div>
         <div class="ui-g-10">
-        <p:dataTable var="endereco">
-    <p:column headerText="Lagradouro">
-        <h:outputText value="" />
-    </p:column>
- 
-    <p:column headerText="Numero">
-        <h:outputText value="" />
-    </p:column>
- 
-    <p:column headerText="Complemento">
-        <h:outputText value="" />
-    </p:column>
- 
-    <p:column headerText="Bairro">
-        <h:outputText value="" />
-    </p:column>
-    <p:column headerText="CEP">
-        <h:outputText value="" />
-    </p:column>
-    <p:column headerText="CidadeUF">
-        <h:outputText value="" />
-    </p:column>       
+   <p:dataTable var="endereco" value="#{enderecoMB.enderecos}">
+         <p:column headerText="Lagradouro" sortBy="#{endereco.logradouro}">
+            <h:outputText value="#{endereco.logradouro}"/>
+        </p:column>
+         <p:column headerText="Número" sortBy="#{endereco.numero}">
+            <h:outputText value="#{endereco.numero}"/>
+        </p:column>
+        <p:column headerText="Complemento" sortBy="#{endereco.complemento}">
+            <h:outputText value="#{endereco.complemento}"/>
+        </p:column>
+        <p:column headerText="Bairro" sortBy="#{endereco.bairro}">
+              <h:outputText value="#{endereco.bairro}"/>
+         </p:column>
+        <p:column headerText="CEP" sortBy="#{endereco.cep}">
+              <h:outputText value="#{endereco.cep}"/>
+        </p:column>
+        <p:column headerText="Cidade" sortBy="#{endereco.cidade}">
+              <h:outputText value="#{endereco.cidade}"/>
+        </p:column>   
 </p:dataTable>
         </div>
             <div align="center" style="margin-top: 20px;">

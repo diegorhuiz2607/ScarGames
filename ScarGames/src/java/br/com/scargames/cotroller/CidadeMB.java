@@ -1,20 +1,13 @@
 
 package br.com.scargames.cotroller;
 
-import br.com.scargames.domain.Bandeira;
 import br.com.scargames.domain.Cidade;
-import br.com.scargames.domain.Genero;
-import br.com.scargames.services.BandeiraService;
 import br.com.scargames.services.CidadeService;
-import br.com.scargames.services.GeneroService;
 import br.com.scargames.util.UtilMessages;
 import java.io.Serializable;
 import java.util.List;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import org.primefaces.PrimeFaces;
 
 @ManagedBean(name = "cidadeMB")
 @SessionScoped

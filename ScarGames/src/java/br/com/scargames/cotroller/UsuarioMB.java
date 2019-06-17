@@ -15,6 +15,7 @@ public class UsuarioMB implements Serializable{
     private Usuario usuario;
     private String nome;
     private String cpf;
+    private String dataNascimento;
     private String telefone;
     private String email;
     private String senha;
@@ -46,6 +47,30 @@ public class UsuarioMB implements Serializable{
         }else{
             UtilMessages.messageError("Dados inválidos!");
             return null; 
+        }
+    }
+    
+    public String alterar(){
+        UsuarioService service = new UsuarioService();
+        if (service.alterar(usuario)){
+            UtilMessages.messageInfo("Usuario alterada com sucesso!");
+            this.listar();
+            return "list.xhtml?faces-redirect=true";
+        }else{
+            UtilMessages.messageError("Ocorreu um erro ao alterar usuario!");
+            return null;
+        }
+    }
+    
+    public String excluir(Usuario usuario){
+        UsuarioService service = new UsuarioService();
+        if (service.excluir(usuario)){
+            UtilMessages.messageInfo("Usuario excluída com sucesso!");
+            this.listar();
+            return "list.xhtml?faces-redirect=true";
+        }else{
+            UtilMessages.messageError("Erro ao excluir Usuario!");
+            return null;
         }
     }
 
@@ -104,6 +129,16 @@ public class UsuarioMB implements Serializable{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    
       
     
 }

@@ -32,22 +32,22 @@ public class EnderecoMB {
     public String inserir(){
         EnderecoService service = new EnderecoService();
         if(service.inserir(endereco)){
-            UtilMessages.messageInfo("Endereco cadastrada com sucesso!");
+            UtilMessages.messageInfo("Endereço cadastrado com sucesso!");
             this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
-            UtilMessages.messageError("Ocorreu um erro ao cadastrar a endereco!");
+            UtilMessages.messageError("Ocorreu um erro ao cadastrar o endereço!");
             return null;
         }
     }
     public String excluir(Endereco endereco){
       EnderecoService service = new EnderecoService();
         if(service.excluir(endereco)){
-             UtilMessages.messageInfo("Endereco excluida com sucesso!");
+             UtilMessages.messageInfo("Endereço excluido com sucesso!");
             this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
-            UtilMessages.messageError("Ocorreu um erro ao excluir a endereco!");
+            UtilMessages.messageError("Ocorreu um erro ao excluir o endereço!");
             return null;
         }
     }
@@ -60,11 +60,11 @@ public class EnderecoMB {
     public String alterar(){
         EnderecoService service = new EnderecoService();
         if(service.alterar(endereco)){
-             UtilMessages.messageInfo("Endereco alterada com sucesso!");
+             UtilMessages.messageInfo("Endereco alterado com sucesso!");
             this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
-            UtilMessages.messageError("Ocorreu um erro ao alterar a endereco!");
+            UtilMessages.messageError("Ocorreu um erro ao alterar o endereco!");
             return null;
         }
     }
