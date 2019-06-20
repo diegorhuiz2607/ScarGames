@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class EnderecoMB {
     
-    private Endereco endereco;
+    private Endereco endereco =new Endereco();
     private List<Endereco> enderecos;
     
     public EnderecoMB() {
@@ -21,7 +21,7 @@ public class EnderecoMB {
 
      public void listar() {
         EnderecoService service = new EnderecoService();
-        List<Endereco> enderecos = service.listar();
+        enderecos = service.listar();
     } 
     
       public String novo(){

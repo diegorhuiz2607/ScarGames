@@ -61,6 +61,10 @@ public class UsuarioMB implements Serializable{
             return null;
         }
     }
+    public String carregarDados(Usuario usuario){
+        this.usuario = usuario;
+        return "alter.xhtml?faces-redirect=true";
+    }
     
     public String excluir(Usuario usuario){
         UsuarioService service = new UsuarioService();

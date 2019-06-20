@@ -46,21 +46,21 @@
                 </div>
                
                 <div class="ui-g-3">
-                    <p:selectOneMenu id="cidade" value="" style="width:90%"
+                    <p:selectOneMenu id="cidade" value="#{enderecoMB.endereco.cidade}" style="width:90%"
                                      placeholder="Cidade" converter="entityConverter">
-                        <f:selectItems value="" 
-                                       var="cidade" itemLabel=""
-                                       itemValue=""/>                                               
+                        <f:selectItems value="#{cidadeMB.cidades}" 
+                                       var="cidade" itemLabel="#{cidade.nome}"
+                                       itemValue="#{cidade}"/>                                               
                     </p:selectOneMenu>
                 </div>
                  <div class="ui-g-1"></div>
                   <div class="ui-g-1"></div>
                 <div class="ui-g-9">  
-                    <p:selectOneMenu id="usuario" value="" style="width:90%"
+                    <p:selectOneMenu id="usuario" value="#{enderecoMB.endereco.usuario}" style="width:90%"
                                      placeholder="Usuário" converter="entityConverter">
-                         <f:selectItems value="" 
-                                       var="usuario" itemLabel=""
-                                       itemValue=""/>                                             
+                        <f:selectItems value="#{usuarioMB.usuarios}" 
+                                       var="usuario" itemLabel="#{usuario.nome}"
+                                       itemValue="#{usuario}"/>                                               
                     </p:selectOneMenu>
                 </div>
  

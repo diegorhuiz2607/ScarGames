@@ -27,29 +27,26 @@
                     <div class="ui-g-1"></div>
                     <div class="ui-g-10">
 
-                        <p:dataTable value="#{usuarioMB.usuario}" var="endereco" paginator="true" 
+                        <p:dataTable value="#{usuarioMB.usuarios}" var="usuario" paginator="true" 
                                      paginatorPosition="bottom" rows="10" emptyMessage="Nenhum registro encontrado" >
                             
                             <f:facet name="header">Listagem de Usuarios</f:facet>
-                            <f:facet name="footer">Total de Registros: #{usuarioMB.usuario.size()}</f:facet>
-                            <p:column headerText="Nome" sortBy="#{usuarioMB.nome}">
-                                <h:outputText value="#{usuarioMB.nome}"/>
+                            <f:facet name="footer">Total de Registros: #{usuarioMB.usuarios.size()}</f:facet>
+                            <p:column headerText="Nome" sortBy="#{usuario.nome}">
+                                <h:outputText value="#{usuario.nome}"/>
                             </p:column>
-                            <p:column headerText="Email" sortBy="#{usuarioMB.email}">
-                                <h:outputText value="#{usuarioMB.email}"/>
+                            <p:column headerText="Email" sortBy="#{usuario.email}">
+                                <h:outputText value="#{usuario.email}"/>
                             </p:column>
-                            <p:column headerText="CPF" sortBy="#{usuarioMB.cpf}">
-                                <h:outputText value="#{usuarioMB.cpf}"/>
+                            <p:column headerText="CPF" sortBy="#{usuario.cpf}">
+                                <h:outputText value="#{usuario.cpf}"/>
                             </p:column>
-                            <p:column headerText="Data" sortBy="#{usuarioMB.dataNascimento}">
-                                <h:outputText value="#{usuarioMB.dataNascimento}"/>
+                            <p:column headerText="Data" sortBy="#{usuario.dataNascimento}">
+                                <h:outputText value="#{usuario.dataNascimento}"/>
                             </p:column>
-                            <p:column headerText="Telefone" sortBy="#{usuarioMB.telefone}">
-                                <h:outputText value="#{usuarioMB.telefone}"/>
-                            </p:column>
-                            <p:column headerText="Senha" sortBy="#{usuarioMB.senha}">
-                                <h:outputText value="#{usuarioMB.senha}"/>
-                            </p:column>
+                            <p:column headerText="Telefone" sortBy="#{usuario.telefone}">
+                                <h:outputText value="#{usuario.telefone}"/>
+                            </p:column>                   
                             <p:column headerText="Editar" width="70" style="text-align: center;">
                                 <p:commandButton icon="ui-icon-pencil" action="#{usuarioMB.carregarDados(usuario)}"/>
                             </p:column>

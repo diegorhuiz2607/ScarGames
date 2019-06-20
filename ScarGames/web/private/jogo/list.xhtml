@@ -30,30 +30,39 @@
                                  rows="10" emptyMessage="Nenhum registro encontrado">
                         <f:facet name="header">Listagem de Jogos</f:facet>
                         <f:facet name="footer">Total de Registros: #{jogoMB.jogos.size()}</f:facet>
+                        
                         <p:column headerText="Titulo" sortBy="#{jogo.titulo}">
                             <h:outputText value="#{jogo.titulo}"/>
                         </p:column>
+                        
                         <p:column headerText="Classificação" sortBy="#{jogo.classificacao}">
                             <h:outputText value="#{jogo.classificacao}"/>
                         </p:column>
+                       
                         <p:column headerText="Sinopse" sortBy="#{jogo.sinopse}">
                             <h:outputText value="#{jogo.sinopse}"/>
                         </p:column>
+                        
                         <p:column headerText="Requisitos" sortBy="#{jogo.requisitos}">
                             <h:outputText value="#{jogo.requisitos}"/>
                         </p:column>
+                        
                         <p:column headerText="Genero" sortBy="#{jogo.genero.descricao}">
                             <h:outputText value="#{jogo.genero.descricao}"/>
                         </p:column>
+                        
                         <p:column headerText="Produtora" sortBy="#{jogo.produtora.nome}">
                             <h:outputText value="#{jogo.produtora.nome}"/>
                         </p:column>
+                        
                         <p:column headerText="Preço" sortBy="#{jogo.preco}">
                             <h:outputText value="#{jogo.preco}"/>
                         </p:column>
+                        
                         <p:column headerText="Editar" width="70" style="text-align: center;">
                             <p:commandButton icon="ui-icon-pencil" action="#{jogoMB.carregarDados(jogo)}"/>
                         </p:column>
+                        
                         <p:column headerText="Excluir" width="70" style="text-align: center;">
                             <p:commandButton icon="ui-icon-trash" action="#{jogoMB.excluir(jogo)}"
                                              onclick="if (!confirm('Confirma exclusão?'))return false"/>

@@ -90,8 +90,8 @@
         <p:column headerText="CEP" sortBy="#{endereco.cep}">
               <h:outputText value="#{endereco.cep}"/>
         </p:column>
-        <p:column headerText="Cidade" sortBy="#{endereco.cidade}">
-              <h:outputText value="#{endereco.cidade}"/>
+       <p:column headerText="Cidade" sortBy="#{endereco.cidade.nome}">
+           <h:outputText value="#{endereco.cidade.nome}"/>
         </p:column>   
 </p:dataTable>
         </div>
